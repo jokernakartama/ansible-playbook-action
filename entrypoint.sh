@@ -1,9 +1,9 @@
 #!/bin/sh
 
-key_path="~/ansible_ssh_key"
-config_path="~/.ansible.cfg"
-inventory_path="~/ansible_hosts"
-password_path="~/ansible_vault_password"
+key_path=~/ansible_ssh_key
+config_path=~/.ansible.cfg
+inventory_path=~/ansible_hosts
+password_path=~/ansible_vault_password
 
 if [ ! -z "$INPUTS_SSH_KEY" ]
 then
