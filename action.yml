@@ -1,0 +1,38 @@
+---
+name: "Ansible playbook runner"
+description: "Runs `ansible-playbook` with command line arguments"
+branding:
+  icon: "play"
+  color: "gray-dark"
+
+inputs:
+  arguments:
+    description: "`ansible-playbook` command line arguments"
+    required: true
+
+  ssh_key:
+    description: "SSH private key"
+    required: false
+
+  config:
+    description: "Custom ansible config file content"
+    required: false
+
+  inventory:
+    description: "Inventory file content"
+    required: false
+
+  password:
+    description: "Vault password file content"
+    required: false
+
+runs:
+  using: docker
+  image: Dockerfile
+  env:
+    INPUTS_SSH_KEY: ${{ inputs.ssh_key }}
+    INPUTS_CONFIG: ${{ inputs.config }}
+    INPUTS_INVENTORY: ${{ inputs.inventory }}
+    INPUTS_PASSWORD: ${{ inputs.password }}
+  args:
+    - ${{ inputs.arguments }}
